@@ -1,0 +1,29 @@
+#_____TASK_________2______
+def arePairs(open,close):
+    if open=='[' and close==']':
+        return True
+    if open=='{' and close=='}':
+        return True
+    if open=='(' and close==')':
+        return True
+    return False
+
+def Balanced(A):
+    stack=[]
+    for i in range(len(A)):
+        if A[i]=='[' or A[i]=='{' or A[i]=='(':
+            stack.append(A[i])
+        elif A[i] == ']' or A[i] == '}' or A[i] == ')':
+            if arePairs(stack[-1],A[i]):
+                stack.pop()
+            else:
+               return False
+    if len(stack)==0:
+
+        print("Balanced")
+    else:
+        print("Unbalanced")
+
+
+A=input("Enter Parenthesis : ")
+print(Balanced(A))
